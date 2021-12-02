@@ -6,8 +6,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lilysova/3.pulse.git"
+  },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lilysova/3.pulse.git/issues"
+  },
+  "homepage": "https://github.com/Lilysova/3.pulse.git#readme",
   
   "devDependencies": {
     "browser-sync": "^2.27.7",
