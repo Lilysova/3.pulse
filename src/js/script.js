@@ -49,4 +49,52 @@ $('.button_mini').each(function(i){
         $('#order .modal__descr').text($('.catalog-item__subtitle').eq(i).text());
         $('.overlay, #order').fadeIn('slow');
     });
+//валидация через файл jqueryvalidate.min.js
+
+function valideForms(form) {
+    $(form).validate({
+        rules: {
+            name : "required",
+            phone: "required",
+            email: {
+                required: true,
+                email: true
+            }
+        },
+        messages: {
+            name: "Пожалуйста введите свое имя",
+            phone: "Пожалуйста введите свой телефон",
+            email: {
+                required: "Пожалуйста введите свою почту",
+                email: "Формат адреса должен быть name@domain.com"
+                }
+        }
+    });   
+}
+valideForms ('#consultation-form');
+valideForms ('#consultation form');
+valideForms ('#order form');
+
+//маска валидации 
+$('input[name=phone]').mask('+38(999)999-99-99');
+
+//mailer отправка форм 
+ $('form').submit(function(e) {
+    e.preventDefault(); //чтоб страница не перезагружалась
+    if(!$(this).valid()) {
+        return;
+    } //если форма не прошла то не отправлять пустую
+    $.ajax({
+        type: 'POST',
+        url: 'mailer/smart.php',
+        data: $(this).serialize()
+    }).done(function() {
+    $(this).find('input').val('');
+    $('#consultation, #order').fadeOut();
+    $('.overlay, #thanks').fadeIn('slow');
+
+    $('form').trigger('reset');
+    });
+    return false;
+ });//отправка формы и возврат в состояние
 });
