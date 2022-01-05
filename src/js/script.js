@@ -51,10 +51,13 @@ $('.button_mini').each(function(i){
     });
 //валидация через файл jqueryvalidate.min.js
 
-function valideForms(form) {
+function valideForms(form){
     $(form).validate({
         rules: {
-            name : "required",
+            name: {
+                required: true,
+                minlength: 2
+            },
             phone: "required",
             email: {
                 required: true,
@@ -62,39 +65,56 @@ function valideForms(form) {
             }
         },
         messages: {
-            name: "Пожалуйста введите свое имя",
-            phone: "Пожалуйста введите свой телефон",
+            name: {
+                required: "Пожалуйста, введите свое имя",
+                minlength: jQuery.validator.format("Введите {0} символа!")
+              },
+            phone: "Пожалуйста, введите свой номер телефона",
             email: {
-                required: "Пожалуйста введите свою почту",
-                email: "Формат адреса должен быть name@domain.com"
-                }
+              required: "Пожалуйста, введите свою почту",
+              email: "Неправильно введен адрес почты"
+            }
         }
     });   
-}
+};
 valideForms ('#consultation-form');
 valideForms ('#consultation form');
 valideForms ('#order form');
 
 //маска валидации 
-$('input[name=phone]').mask('+38(999)999-99-99');
+$('input[name=phone]').mask("+38 (999) 999-99-99");
 
 //mailer отправка форм 
- $('form').submit(function(e) {
-    e.preventDefault(); //чтоб страница не перезагружалась
-    if(!$(this).valid()) {
-        return;
-    } //если форма не прошла то не отправлять пустую
+$('form').submit(function(e) {
+    e.preventDefault();
     $.ajax({
-        type: 'POST',
-        url: 'mailer/smart.php',
+        type: "POST",
+        url: "mailer/smart.php",
         data: $(this).serialize()
     }).done(function() {
-    $(this).find('input').val('');
-    $('#consultation, #order').fadeOut();
-    $('.overlay, #thanks').fadeIn('slow');
+        $(this).find("input").val("");
+        $('#consultation, #order').fadeOut();
+        $('.overlay, #thanks').fadeIn('slow');
 
-    $('form').trigger('reset');
+        $('form').trigger('reset');
     });
+    return false;//отправка формы и возврат в состояние
+ });
+
+ //скрол страницы 
+ $(window).scroll(function() {
+ if ($(this).scrollTop() > 1600) {
+     $('.pageup').fadeIn();
+  } else {
+     $('.pageup').fadeOut();
+  }
+ });
+ //прокрутка плавная по сайту 
+ $("a[href^='#']").click(function(){
+    const _href = $(this).attr("href");
+    $("html, body").animate({scrollTop: $(_href).offset().top+"px"});
     return false;
- });//отправка формы и возврат в состояние
+ });
+ 
+ new WOW().init();
 });

@@ -1,52 +1,50 @@
 .advantage {
-  min-height: 470px;
   padding: 73px 0 73px 0;
   background-color: #f6f6f6;
+  &__header {
+    color: #0d0d0d;
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+  }
   &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 65px;
+  }
+  &__item {
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-width: 238px;
   }
-  &__header {
-    font-style: normal;
-    font-weight: 700;
-    font-size: 30px;
-    line-height: 30px;
+  &__subtitle {
+    margin-top: 38px;
     color: #0d0d0d;
+    font-size: 18px;
+    font-weight: 700;
   }
-  &__icons {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 60px;
+  &__descr {
+    margin-top: 26px;
+    color: #0d0d0d;
+    font-size: 14px;
+    font-weight: 300;
+    text-align: center;
+    a {
+      color: #ff0000;
+      text-decoration: underline;
+    }
   }
   &__icon {
-    width: 300px;
-    height: 270px;
-    text-align: center;
-    font-size: 18px;
-    line-height: 29px;
-    font-weight: 700;
-    color: #0d0d0d;
-
-    img {
-      display: block;
-      margin: 0 auto;
-      margin-bottom: 35px;
-    }
-    h3 {
-      font-weight: 300;
-      font-size: 14px;
-      line-height: 18px;
-      margin: 25px 25px 0 25px;
-      &:nth-child(3) {
-        margin: 25px 0 0 25px;
+    &_animation {
+      animation-name: heartbeat;
+      animation-duration: 2s;
+      animation-timing-function: ease;
+      animation-iteration-count: infinite;
+      &:hover {
+        animation-play-state: paused;
       }
-    }
-    a {
-      font-style: normal;
-      text-transform: uppercase;
-      color: $main-color;
     }
   }
 }

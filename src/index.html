@@ -9,10 +9,11 @@
     <link rel="stylesheet" href="css/bootstrap-grid.min.css" />
     <link rel="stylesheet" href="css/fonts.css" />
     <link rel="stylesheet" href="css/slick.css" />
+    <link rel="stylesheet" href="css/animate.css" />
     <link rel="stylesheet" href="css/style.min.css" />
   </head>
   <body>
-    <section class="promo">
+    <section id="up" class="promo">
       <div class="container">
         <header class="header">
           <a href="#" class="header__logo"
@@ -59,32 +60,34 @@
     </section>
     <section class="advantage">
       <div class="container">
+        <h2 class="advantage__header">НАШИ ПРЕИМУЩЕСТВА</h2>
         <div class="advantage__wrapper">
-          <h2 class="advantage__header">НАШИ ПРЕИМУЩЕСТВА</h2>
-          <div class="advantage__icons">
-            <div class="advantage__icon">
-              <img src="icons/2_cup.png" alt="cup" />Делимся опытом
-              <h3>
+          <div class="advantage__item">
+            <img src="icons/2_cup.png" alt="cup" class="advantage__icon" />
+            <div class="advantage__subtitle">Делимся опытом</div>
+              <div class="advantage__descr">
                 Наши сотрудники всегда готовы поделиться своим опытом,  так как
                 сами бегают полумарафоны, переплыли Босфор, готовятся к
                 соревнованиям по триатлону!
-              </h3>
+              </div>
             </div>
-            <div class="advantage__icon">
-              <img src="icons/2_heart.png" alt="heart" />Заботимся о здоровье
-              <h3>
+            <div class="advantage__item">
+              <img src="icons/2_heart.png" alt="heart" class="advantage__icon advantage__icon_animation" />
+              <div class="advantage__subtitle">Делимся опытом</div>
+              <div class="advantage__descr">
                 Мы работаем для того, чтобы Ваши занятия спортом шли на пользу
                 Вашему здоровью и были в радость Вам и Вашим близким!
-              </h3>
+              </div>
             </div>
-            <div class="advantage__icon">
-              <img src="icons/2_shoe.png" alt="shoe" />Учим бегать
-              <h3>
+            <div class="advantage__item">
+              <img src="icons/2_shoe.png" alt="shoe" class="advantage__icon"/>
+              <div class="advantage__subtitle">Учим бегать</div>
+              <div class="advantage__descr">
                 Помогаем с обучением  правильной технике бега!  Дружим с
                 крупнейшей школой бега в Украине -<a href="#"
                   >I LOVE RUNNING.</a
                 >
-              </h3>
+                </div>
             </div>
           </div>
         </div>
@@ -499,7 +502,7 @@
         <div class="reviews__wrapper">
           <h2 class="reviews__header">отзывы клиентов</h2>
           <div class="reviews__icons">
-            <div class="reviews__icon">
+            <div class="reviews__icon animate__animated animate__fadeInUp wow" data-wow-duration="2s" data-wow-delay="1s">
               <img src="icons/irina.png" alt="irina" />
               <div class="reviews__title">
                 <div class="reviews__name">Ирина Иванченко</div>
@@ -513,7 +516,7 @@
                 </div>
               </div>
             </div>
-            <div class="reviews__icon">
+            <div class="reviews__icon animate__animated animate__fadeInUp wow" data-wow-duration="2s" data-wow-delay="1s">
               <img src="icons/ivan.png" alt="ivan" />
               <div class="reviews__title">
                 <div class="reviews__name">Иван Сёмочкин</div>
@@ -528,7 +531,7 @@
                 </div>
               </div>
             </div>
-            <div class="reviews__icon">
+            <div class="reviews__icon animate__animated animate__fadeInUp wow" data-wow-duration="2s" data-wow-delay="1s">
               <img src="icons/yuliya.png" alt="yuliya" />
               <div class="review__title">
                 <div class="reviews__name">Юлия Дашкина</div>
@@ -610,6 +613,9 @@
         </div>
       </div>
     </div>
+    <a href="#up" class="pageup">
+      <img src="icons/chevron-circle-up-solid.svg" alt="up" />
+    </a>
 
     <script
       type="text/javascript"
@@ -622,6 +628,7 @@
     <script src="js/jquery.validate.min.js"></script>
     <script src="js/jquery.maskedinput.min.js"></script>
     <script src="js/slick.min.js"></script>
+    <script src="js/wow.min.js"></script>
     <script src="js/script.js"></script>
   </body>
 </html>
