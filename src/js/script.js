@@ -33,25 +33,27 @@ $(document).ready(function(){
 
     toggleSlide('.catalog-item__link');
     toggleSlide('.catalog-item__back');
+
 //модальные окна показываем скрытые
+
 $('[data-modal=consultation]').on('click', function() {
     $('.overlay, #consultation').fadeIn('slow');
 });
-//скрываем принажатии на крестик
+//скрываем при нажатии на крестик
 $('.modal__close').on('click', function(){
     $('.overlay, #consultation, #thanks, #order').fadeOut('slow');
 });
 
-});
 //при нажатии на кнопку показывается  определенный выбранный товар
-$('.button_mini').each(function(i){
-    $(this).on('click',function(){
+$('.button_mini').each(function(i) {
+    $(this).on('click', function() {
         $('#order .modal__descr').text($('.catalog-item__subtitle').eq(i).text());
         $('.overlay, #order').fadeIn('slow');
-    });
+    })
+});
 //валидация через файл jqueryvalidate.min.js
 
-function valideForms(form){
+function validateForms(form){
     $(form).validate({
         rules: {
             name: {
@@ -77,9 +79,9 @@ function valideForms(form){
         }
     });   
 };
-valideForms ('#consultation-form');
-valideForms ('#consultation form');
-valideForms ('#order form');
+validateForms ('#consultation-form');
+validateForms ('#consultation form');
+validateForms ('#order form');
 
 //маска валидации 
 $('input[name=phone]').mask("+38 (999) 999-99-99");
@@ -87,6 +89,11 @@ $('input[name=phone]').mask("+38 (999) 999-99-99");
 //mailer отправка форм 
 $('form').submit(function(e) {
     e.preventDefault();
+
+    if (!$(this).valid()) {
+        return;
+    }
+
     $.ajax({
         type: "POST",
         url: "mailer/smart.php",
@@ -109,8 +116,9 @@ $('form').submit(function(e) {
      $('.pageup').fadeOut();
   }
  });
+ 
  //прокрутка плавная по сайту 
- $("a[href^='#']").click(function(){
+ $("a[href=#up]").click(function(){
     const _href = $(this).attr("href");
     $("html, body").animate({scrollTop: $(_href).offset().top+"px"});
     return false;

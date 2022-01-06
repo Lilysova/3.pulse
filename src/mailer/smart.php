@@ -13,8 +13,8 @@ $mail->CharSet = 'utf-8';
 $mail->isSMTP();                                      // Set mailer to use SMTP
 $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
 $mail->SMTPAuth = true;                               // Enable SMTP authentication
-$mail->Username = 'moon4liliya@gmail.com';                 // Наш логин
-$mail->Password = 'fwddqccagvuvzgrk';                           // Наш пароль приложения почты
+$mail->Username = 'moon4liliya@gmail.com';                 // Наш логин почта
+$mail->Password = 'fwdd qcca gvuv zgrk';                           // Наш пароль приложения
 $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
 $mail->Port = 465;                                    // TCP port to connect to
  
